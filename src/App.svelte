@@ -1,9 +1,7 @@
 <script lang="ts">
+  import Todos from './pages/Todos.svelte';
 </script>
 
 <main>
-  <h1>Hello World!</h1>
+  <Todos />
 </main>
-
-<style>
-</style>
