@@ -23,4 +23,12 @@ export const TodoGateway = {
       console.error(err);
     }
   },
+  async updateTodo(todo: Todo): Promise<Todo> {
+    try {
+      const res = await apiBase.put(`/${todo.id}`, todo)
+      return res.data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 };
