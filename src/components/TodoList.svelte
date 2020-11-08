@@ -31,4 +31,10 @@
   li {
     list-style: none;
   }
+  button {
+    opacity: 0;
+  }
+  li:hover button {
+    opacity: 1;
+  }
 </style>
