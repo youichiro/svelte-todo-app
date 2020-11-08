@@ -7,14 +7,13 @@ const apiBase = axios.create({
   responseType: 'json',
 });
 
-export const fetchTodos = async (): Promise<Todo[]> => {
-  try {
-    const res = await apiBase({
-      method: 'get',
-      url: '/',
-    });
-    return res.data;
-  } catch (err) {
-    console.error(err);
+export const TodoGateway = {
+  async fetchTodos(): Promise<Todo[]> {
+    try {
+      const res = await apiBase({ method: 'get', url: '/' });
+      return res.data;
+    } catch (err) {
+      console.error(err)
+    }
   }
-};
+}

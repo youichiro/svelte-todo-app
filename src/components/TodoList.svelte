@@ -10,11 +10,11 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fetchTodos } from '../gateways/todo.gateway';
   import { todos } from '../store/todo.store';
+  import { TodoGateway } from '../gateways/todo.gateway';
 
-  onMount(async () => {
-    todos.set(await fetchTodos());
+  onMount(async (): Promise<void> => {
+    todos.set(await TodoGateway.fetchTodos())
   })
 </script>
 
