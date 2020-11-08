@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { Todo } from '../domain/models';
 
 const apiBase = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/todos',
@@ -6,7 +7,7 @@ const apiBase = axios.create({
   responseType: 'json',
 });
 
-export const fetchTodos = async () => {
+export const fetchTodos = async (): Promise<Todo[]> => {
   try {
     const res = await apiBase({
       method: 'get',
@@ -14,6 +15,6 @@ export const fetchTodos = async () => {
     });
     return res.data;
   } catch (err) {
-    console.error(err);
+    throw new Error(err);
   }
 };
