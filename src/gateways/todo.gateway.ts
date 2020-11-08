@@ -10,10 +10,17 @@ const apiBase = axios.create({
 export const TodoGateway = {
   async fetchTodos(): Promise<Todo[]> {
     try {
-      const res = await apiBase({ method: 'get', url: '/' });
+      const res = await apiBase.get('/');
       return res.data;
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
-}
+  },
+  async deleteTodo(id: number): Promise<void> {
+    try {
+      await apiBase.delete(`/${id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+};

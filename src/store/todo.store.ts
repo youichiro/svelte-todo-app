@@ -6,9 +6,10 @@ const todosStore = () => {
   return {
     subscribe,
     set: (todos: Todo[]) => set(todos),
-    updateTodo: (todo: Todo) => update(todos => todos.map((t) => t.id === todo.id ? todo : t)),
-    reset: () => set([])
+    updateTodo: (todo: Todo) => update((todos) => todos.map((t) => (t.id === todo.id ? todo : t))),
+    deleteTodo: (id: number) => update((todos) => todos.filter((todo) => todo.id !== id)),
+    reset: () => set([]),
   };
-}
+};
 
 export const todos = todosStore();
