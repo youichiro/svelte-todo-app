@@ -15,6 +15,6 @@ export const fetchTodos = async (): Promise<Todo[]> => {
     });
     return res.data;
   } catch (err) {
-    throw new Error(err);
+    console.error(err);
   }
 };
