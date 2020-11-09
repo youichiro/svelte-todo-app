@@ -1,6 +1,6 @@
 <div>
   <ul>
-    {#each $todos as todo (todo.id)}
+    {#each sortByIdDesc($todos) as todo (todo.id)}
       <li>
         <TodoItem todo="{todo}" />
       </li>
@@ -13,12 +13,17 @@
   import { todos } from '../store/todo.store';
   import { TodoGateway } from '../gateways/todo.gateway';
   import TodoItem from './TodoItem.svelte';
+  import type { Todo } from '../domain/models';
 
   onMount(
     async (): Promise<void> => {
       todos.set(await TodoGateway.fetchTodos());
     },
   );
+
+  const sortByIdDesc = (todos: Todo[]) => {
+    return todos.sort((a: Todo, b: Todo) => b.id - a.id);
+  };
 </script>
 
 <style lang="scss">
