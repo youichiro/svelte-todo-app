@@ -1,6 +1,6 @@
 <div class="todo-item">
   <input type="checkbox" checked="{todo.completed}" on:click="{() => toggleCompleted(todo)}" disabled="{disabled}" />
-  {todo.title}
+  <span class:completed="{todo.completed}"> {todo.title} </span>
   <button on:click="{() => deleteTodo(todo.id)}">x</button>
 </div>
 
@@ -35,5 +35,9 @@
   }
   .todo-item:hover button {
     opacity: 1;
+  }
+  .completed {
+    color: #d9d9d9;
+    text-decoration: line-through;
   }
 </style>
