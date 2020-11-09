@@ -2,7 +2,11 @@
   <ul>
     {#each $todos as todo (todo.id)}
       <li>
-        <input type="checkbox" checked="{todo.completed}" on:click="{() => toggleCompleted(todo)}" disabled="{disabled}" />
+        <input
+          type="checkbox"
+          checked="{todo.completed}"
+          on:click="{() => toggleCompleted(todo)}"
+          disabled="{disabled}" />
         {todo.title}
         <button on:click="{() => deleteTodo(todo.id)}">x</button>
       </li>
