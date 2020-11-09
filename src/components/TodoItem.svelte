@@ -1,7 +1,7 @@
 <div class="todo-item">
-  <input type="checkbox" checked={todo.completed} on:click={() => toggleCompleted(todo)} disabled={disabled} />
-  <span class:completed={todo.completed}> {todo.title} </span>
-  <button on:click={() => deleteTodo(todo.id)}>x</button>
+  <input type="checkbox" checked="{todo.completed}" on:click="{() => toggleCompleted(todo)}" disabled="{disabled}" />
+  <span class:completed="{todo.completed}"> {todo.title} </span>
+  <button on:click="{() => deleteTodo(todo.id)}">x</button>
 </div>
 
 <script lang="ts">
