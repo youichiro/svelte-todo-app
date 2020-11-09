@@ -27,6 +27,9 @@
 </script>
 
 <style lang="scss">
+  ul {
+    padding: 0;
+  }
   li {
     list-style: none;
   }

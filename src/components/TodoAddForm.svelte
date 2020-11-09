@@ -1,6 +1,6 @@
 <div>
   <form on:submit|preventDefault="{handleSubmit}">
-    <input type="text" bind:value="{title}" placeholder="enter todo title" />
+    <input type="text" bind:value="{title}" placeholder="Enter todo title" />
     <button type="submit">+</button>
   </form>
 </div>
@@ -14,6 +14,9 @@
   let lastId: number;
 
   const handleSubmit = async () => {
+    if (title === '') {
+      return;
+    }
     const params: TodoPostParams = {
       userId: 1,
       title,
@@ -25,3 +28,18 @@
     title = '';
   };
 </script>
+
+<style lang="scss">
+  input {
+    width: 50vw;
+  }
+  button {
+    background-color: white;
+  }
+  button:hover {
+    background-color: orange;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>

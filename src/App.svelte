@@ -1,7 +1,7 @@
 <main>
-  <Todos />
+  <Top />
 </main>
 
 <script lang="ts">
-  import Todos from './pages/Todos.svelte';
+  import Top from './pages/Top.svelte';
 </script>
