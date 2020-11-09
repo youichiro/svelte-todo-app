@@ -32,9 +32,13 @@
 <style lang="scss">
   button {
     opacity: 0;
+    color: gray;
+    background-color: white;
+    border: none;
   }
   .todo-item:hover button {
     opacity: 1;
+    cursor: pointer;
   }
   .completed {
     color: #d9d9d9;
