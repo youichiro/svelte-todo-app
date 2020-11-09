@@ -25,10 +25,10 @@ export const TodoGateway = {
   },
   async updateTodo(todo: Todo): Promise<Todo> {
     try {
-      const res = await apiBase.put(`/${todo.id}`, todo)
+      const res = await apiBase.put(`/${todo.id}`, todo);
       return res.data;
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };
