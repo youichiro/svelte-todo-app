@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Todo } from '../domain/models';
+import type { Todo, TodoPostParams } from '../domain/models';
 
 const apiBase = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/todos',
@@ -26,6 +26,15 @@ export const TodoGateway = {
   async updateTodo(todo: Todo): Promise<Todo> {
     try {
       const res = await apiBase.put(`/${todo.id}`, todo);
+      return res.data;
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  async createTodo(todo: TodoPostParams): Promise<Todo> {
+    try {
+      const res = await apiBase.post('/', todo);
       return res.data;
     } catch (err) {
       console.error(err);
