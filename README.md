@@ -1,6 +1,6 @@
 # svelte-todo-app
 
-This is a simple todo app project using [Svelte](https://svelte.dev/).
+This is a simple todo app project using [Svelte](https://svelte.dev/).<br>
 For our demo site, Svelte calls [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API.
 
 Demo site: https://svelte-todo-app-sample.vercel.app
