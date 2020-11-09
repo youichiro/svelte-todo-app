@@ -2,7 +2,7 @@
   <ul>
     {#each sortByIdDesc($todos) as todo (todo.id)}
       <li>
-        <TodoItem todo="{todo}" />
+        <TodoItem todo={todo} />
       </li>
     {/each}
   </ul>
