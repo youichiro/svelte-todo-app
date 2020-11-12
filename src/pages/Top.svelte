@@ -1,9 +1,11 @@
 <div class="top">
   <h1>Svelte Todo App</h1>
   <TodoAddForm />
-  <TodoActiveFilterButton />
-  <TodoCompletedFilterButton />
-  <TodoAllButton />
+  <div class="buttons">
+    <TodoActiveFilterButton />
+    <TodoCompletedFilterButton />
+    <TodoAllButton />
+  </div>
   <TodoList />
 </div>
 
@@ -19,5 +21,10 @@
   .top {
     display: grid;
     place-items: center;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
   }
 </style>

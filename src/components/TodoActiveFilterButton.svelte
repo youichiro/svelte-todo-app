@@ -7,3 +7,9 @@
     status.update(() => 'active');
   };
 </script>
+
+<style lang="scss">
+  button {
+    width: 100%;
+  }
+</style>

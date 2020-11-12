@@ -7,3 +7,9 @@
     status.update(() => 'all');
   };
 </script>
+
+<style lang="scss">
+  button {
+    width: 100%;
+  }
+</style>

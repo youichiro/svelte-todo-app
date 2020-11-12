@@ -7,3 +7,9 @@
     status.update(() => 'completed');
   };
 </script>
+
+<style lang="scss">
+  button {
+    width: 100%;
+  }
+</style>
