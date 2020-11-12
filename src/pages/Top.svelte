@@ -25,6 +25,7 @@
   }
   h2 {
     color: #888888;
+    font-size: medium;
   }
   .buttons {
     display: grid;
