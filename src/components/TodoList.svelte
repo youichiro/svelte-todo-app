@@ -20,9 +20,9 @@
 
   onMount(
     async (): Promise<void> => {
-      const fetchedTodos = await TodoGateway.fetchTodos();
-      todoStore.set(fetchedTodos);
-      displayTodos = prepareTodos(fetchedTodos, $statusStore);
+      const todos = await TodoGateway.fetchTodos();
+      todoStore.set(todos);
+      displayTodos = prepareTodos(todos, $statusStore);
     },
   );
 
@@ -37,12 +37,12 @@
     return items;
   };
 
-  const unsubscribeTodos = todoStore.subscribe((values) => {
-    displayTodos = prepareTodos(values, $statusStore);
+  const unsubscribeTodos = todoStore.subscribe((todos) => {
+    displayTodos = prepareTodos(todos, $statusStore);
   });
 
-  const unsubscribeStatus = statusStore.subscribe((value) => {
-    displayTodos = prepareTodos($todoStore, value);
+  const unsubscribeStatus = statusStore.subscribe((status) => {
+    displayTodos = prepareTodos($todoStore, status);
   });
 
   onDestroy(unsubscribeTodos);
