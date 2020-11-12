@@ -1,5 +1,6 @@
 <div class="top">
-  <h1>Svelte Todo App</h1>
+  <img src="images/svelte-logo.png" alt="svelte-logo" width="400px" />
+  <h2>simple todo app demo</h2>
   <TodoAddForm />
   <div class="buttons">
     <TodoFilterButton title="Active" status="active" selected="{$statusStore === 'active'}" />
@@ -18,8 +19,12 @@
 
 <style lang="scss">
   .top {
+    margin-top: 40px;
     display: grid;
     place-items: center;
+  }
+  h2 {
+    color: #888888;
   }
   .buttons {
     display: grid;
