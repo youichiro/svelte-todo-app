@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Todo } from '../domain/models';
 
-const createTodosStore = () => {
+const createTodoStore = () => {
   const { subscribe, set, update } = writable([]);
   return {
     subscribe,
@@ -13,4 +13,4 @@ const createTodosStore = () => {
   };
 };
 
-export const todosStore = createTodosStore();
+export const todoStore = createTodoStore();
