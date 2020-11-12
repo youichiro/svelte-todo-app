@@ -4,10 +4,10 @@
   import type { Status } from '../domain/models';
   import { statusStore } from '../store/status.store';
   export let title: string;
-  export let statusProps: Status;
+  export let status: Status;
 
   const filterTodos = (): void => {
-    statusStore.update(() => statusProps);
+    statusStore.update(() => status);
   };
 </script>
 

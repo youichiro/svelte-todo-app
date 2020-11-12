@@ -2,9 +2,9 @@
   <h1>Svelte Todo App</h1>
   <TodoAddForm />
   <div class="buttons">
-    <TodoFilterButton title="Active" statusProps="active" />
-    <TodoFilterButton title="Completed" statusProps="completed" />
-    <TodoFilterButton title="All" statusProps="all" />
+    <TodoFilterButton title="Active" status="active" />
+    <TodoFilterButton title="Completed" status="completed" />
+    <TodoFilterButton title="All" status="all" />
   </div>
   <TodoList />
 </div>
