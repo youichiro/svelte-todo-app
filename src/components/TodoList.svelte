@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
-  import { todos } from '../store/todo.store';
+  import { todosStore } from '../store/todo.store';
   import { TodoGateway } from '../gateways/todo.gateway';
   import TodoItem from './TodoItem.svelte';
   import type { Status, Todo } from '../domain/models';
@@ -21,7 +21,7 @@
   onMount(
     async (): Promise<void> => {
       const fetchedTodos = await TodoGateway.fetchTodos();
-      todos.set(fetchedTodos);
+      todosStore.set(fetchedTodos);
       displayTodos = prepareTodos(fetchedTodos, $statusStore);
     },
   );
@@ -37,12 +37,12 @@
     return items;
   };
 
-  const unsubscribeTodos = todos.subscribe((values) => {
+  const unsubscribeTodos = todosStore.subscribe((values) => {
     displayTodos = prepareTodos(values, $statusStore);
   });
 
   const unsubscribeStatus = statusStore.subscribe((value) => {
-    displayTodos = prepareTodos($todos, value);
+    displayTodos = prepareTodos($todosStore, value);
   });
 
   onDestroy(unsubscribeTodos);

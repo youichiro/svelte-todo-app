@@ -7,14 +7,14 @@
 <script lang="ts">
   import type { Todo } from '../domain/models';
   import { TodoGateway } from '../gateways/todo.gateway';
-  import { todos } from '../store/todo.store';
+  import { todosStore } from '../store/todo.store';
   export let todo: Todo;
 
   let disabled: boolean = false;
 
   const deleteTodo = async (id: number): Promise<void> => {
     TodoGateway.deleteTodo(id);
-    todos.deleteTodo(id);
+    todosStore.deleteTodo(id);
   };
 
   const toggleCompleted = async (previousTodo: Todo) => {
@@ -24,7 +24,7 @@
       completed: !previousTodo.completed,
     };
     await TodoGateway.updateTodo(todo);
-    todos.updateTodo(todo);
+    todosStore.updateTodo(todo);
     disabled = false;
   };
 </script>

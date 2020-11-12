@@ -8,7 +8,7 @@
 <script lang="ts">
   import type { Todo, TodoPostParams } from '../domain/models';
   import { TodoGateway } from '../gateways/todo.gateway';
-  import { todos } from '../store/todo.store';
+  import { todosStore } from '../store/todo.store';
 
   let title: string = '';
   let lastId: number;
@@ -24,7 +24,7 @@
     };
     const todo: Todo = await TodoGateway.createTodo(params);
     lastId = lastId ? lastId + 1 : todo.id;
-    todos.insert({ ...todo, id: lastId });
+    todosStore.insert({ ...todo, id: lastId });
     title = '';
   };
 </script>
