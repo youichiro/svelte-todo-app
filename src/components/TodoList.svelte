@@ -13,7 +13,7 @@
   import { todos } from '../store/todo.store';
   import { TodoGateway } from '../gateways/todo.gateway';
   import TodoItem from './TodoItem.svelte';
-  import type { Todo } from '../domain/models';
+  import type { Status, Todo } from '../domain/models';
   import { status } from '../store/status.store';
 
   let displayTodos: Todo[];
@@ -22,18 +22,31 @@
     async (): Promise<void> => {
       const fetchedTodos = await TodoGateway.fetchTodos();
       todos.set(fetchedTodos);
-      displayTodos = fetchedTodos;
+      displayTodos = prepareTodos(fetchedTodos, $status);
     },
   );
 
-  const getDisplayTodos = status.subscribe((value) => {
-    let items = $todos.sort((a, b) => b.id - a.id);
-    items = value === 'active' ? items.filter((item) => !item.completed) : items;
-    items = value === 'completed' ? items.filter((item) => item.completed) : items;
-    displayTodos = items;
+  const prepareTodos = (todos: Todo[], status: Status): Todo[] => {
+    const items = todos.sort((a, b) => b.id - a.id);
+    if (status === 'active') {
+      return items.filter((item) => !item.completed);
+    }
+    if (status === 'completed') {
+      return items.filter((item) => item.completed);
+    }
+    return items;
+  };
+
+  const unsubscribeTodos = todos.subscribe((values) => {
+    displayTodos = prepareTodos(values, $status);
   });
 
-  onDestroy(getDisplayTodos);
+  const unsubscribeStatus = status.subscribe((value) => {
+    displayTodos = prepareTodos($todos, value);
+  });
+
+  onDestroy(unsubscribeTodos);
+  onDestroy(unsubscribeStatus);
 </script>
 
 <style lang="scss">
