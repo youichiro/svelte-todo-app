@@ -1,6 +1,6 @@
 <div>
   <ul>
-    {#each sortByIdDesc($todos) as todo (todo.id)}
+    {#each displayTodos as todo (todo.id)}
       <li>
         <TodoItem todo="{todo}" />
       </li>
@@ -9,21 +9,31 @@
 </div>
 
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import { todos } from '../store/todo.store';
   import { TodoGateway } from '../gateways/todo.gateway';
   import TodoItem from './TodoItem.svelte';
   import type { Todo } from '../domain/models';
+  import { status } from '../store/status.store';
+
+  let displayTodos: Todo[];
 
   onMount(
     async (): Promise<void> => {
-      todos.set(await TodoGateway.fetchTodos());
+      const fetchedTodos = await TodoGateway.fetchTodos();
+      todos.set(fetchedTodos);
+      displayTodos = fetchedTodos;
     },
   );
 
-  const sortByIdDesc = (todos: Todo[]) => {
-    return todos.sort((a: Todo, b: Todo) => b.id - a.id);
-  };
+  const getDisplayTodos = status.subscribe((value) => {
+    let items = $todos.sort((a, b) => b.id - a.id);
+    items = value === 'active' ? items.filter((item) => !item.completed) : items;
+    items = value === 'completed' ? items.filter((item) => item.completed) : items;
+    displayTodos = items;
+  });
+
+  onDestroy(getDisplayTodos);
 </script>
 
 <style lang="scss">

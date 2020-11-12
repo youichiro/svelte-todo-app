@@ -10,3 +10,5 @@ export interface TodoPostParams {
   title: string;
   completed: boolean;
 }
+
+export type Status = 'all' | 'active' | 'completed';
