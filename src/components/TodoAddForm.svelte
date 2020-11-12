@@ -32,6 +32,10 @@
 <style lang="scss">
   input {
     width: 50vw;
+
+    @media screen and (max-width: 480px) {
+      width: 80vw;
+    }
   }
   button {
     background-color: white;

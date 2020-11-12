@@ -31,14 +31,14 @@
 
 <style lang="scss">
   button {
-    opacity: 0;
+    opacity: 0.4;
     color: gray;
     background-color: white;
     border: none;
+    cursor: pointer;
   }
   .todo-item:hover button {
     opacity: 1;
-    cursor: pointer;
   }
   .completed {
     color: #d9d9d9;
