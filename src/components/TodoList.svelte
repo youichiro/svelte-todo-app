@@ -14,7 +14,7 @@
   import { TodoGateway } from '../gateways/todo.gateway';
   import TodoItem from './TodoItem.svelte';
   import type { Status, Todo } from '../domain/models';
-  import { status } from '../store/status.store';
+  import { statusStore } from '../store/status.store';
 
   let displayTodos: Todo[];
 
@@ -22,7 +22,7 @@
     async (): Promise<void> => {
       const fetchedTodos = await TodoGateway.fetchTodos();
       todos.set(fetchedTodos);
-      displayTodos = prepareTodos(fetchedTodos, $status);
+      displayTodos = prepareTodos(fetchedTodos, $statusStore);
     },
   );
 
@@ -38,10 +38,10 @@
   };
 
   const unsubscribeTodos = todos.subscribe((values) => {
-    displayTodos = prepareTodos(values, $status);
+    displayTodos = prepareTodos(values, $statusStore);
   });
 
-  const unsubscribeStatus = status.subscribe((value) => {
+  const unsubscribeStatus = statusStore.subscribe((value) => {
     displayTodos = prepareTodos($todos, value);
   });
 

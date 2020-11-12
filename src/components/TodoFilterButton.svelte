@@ -2,12 +2,12 @@
 
 <script lang="ts">
   import type { Status } from '../domain/models';
-  import { status } from '../store/status.store';
+  import { statusStore } from '../store/status.store';
   export let title: string;
   export let statusProps: Status;
 
   const filterTodos = (): void => {
-    status.update(() => statusProps);
+    statusStore.update(() => statusProps);
   };
 </script>
 
