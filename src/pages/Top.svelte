@@ -1,6 +1,6 @@
 <div class="top">
   <img src="images/svelte-logo.png" alt="svelte-logo" width="400px" />
-  <h2>simple todo app demo</h2>
+  <h2>simple todo app demo <a href="https://github.com/youichiro/svelte-todo-app">[GitHub]</a></h2>
   <TodoAddForm />
   <div class="buttons">
     <TodoFilterButton title="Active" status="active" selected="{$statusStore === 'active'}" />
